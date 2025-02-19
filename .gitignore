@@ -1,25 +1,50 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Virtual environments
-.venv/
-venv/
-
-# Poetry lock file (keep if you want lockfile versioned)
-# Uncomment the next line if you want to ignore it
-# poetry.lock
-
-# Distribution / packaging
+*.so
+.Python
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-*.whl
 
-# Unit test / coverage reports
+# Poetry
+poetry.lock
+.venv/
+venv/
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Coverage reports
 htmlcov/
 .tox/
 .nox/
@@ -31,29 +56,14 @@ coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
-pytest_cache/
+.pytest_cache/
+cover/
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# mypy
-.mypy_cache/
-
-# IDE / editor files
-.idea/
-.vscode/
-*.sublime-workspace
-
-# Logs and debugging files
+# Logs
 *.log
-*.out
-*.err
-debug.log
+logs/
+log/
 
-# Docker-related
-.dockerignore
-docker-compose.override.yml
-
-# System-specific
+# System files
 .DS_Store
 Thumbs.db
