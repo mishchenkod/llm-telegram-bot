@@ -10,7 +10,8 @@ requires-python = ">=3.13"
 dependencies = [
     "python-telegram-bot (>=21.10,<22.0)",
     "black (>=25.1.0,<26.0.0)",
-    "isort (>=6.0.0,<7.0.0)"
+    "isort (>=6.0.0,<7.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)"
 ]
 
 [tool.poetry]
