@@ -1,0 +1,36 @@
+[flake8]
+# Maximum line length – Black uses 88 by default
+max-line-length = 88
+
+# Additional style enforcement
+# C: McCabe complexity
+# E, W: pycodestyle errors and warnings
+# F: Pyflakes checks
+# B: Bugbear security and performance checks
+# B950: Allow longer lines but warn (consistent with Black formatting)
+select = C,E,F,W,B,B950
+
+# Ignore rules to avoid conflicts with Black
+ignore = E203, E701, W503
+
+# Set complexity threshold
+max-complexity = 10
+
+# Maximum number of local variables in a function
+max-locals = 15
+
+# Exclude common directories and files
+exclude = 
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv,
+    venv,
+    .env
+
+# Show source of errors
+show-source = True
+
+# Count the number of errors
+count = True
