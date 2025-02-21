@@ -11,6 +11,7 @@ from telegram.ext import (
 )
 
 from bot import config
+from bot.handlers import ollama
 
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -22,17 +23,12 @@ async def start(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text("Hello! I'm your Telegram bot.")
 
 
-async def echo(update: Update, context: CallbackContext):
-    """Echo user messages."""
-    await update.message.reply_text(update.message.text)
-
-
 def main():
     """Starts the bot."""
     app = ApplicationBuilder().token(config.TELEGRAM_BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, ollama.ask))
 
     print("Bot is running...")
     app.run_polling()
