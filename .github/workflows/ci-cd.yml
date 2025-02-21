@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI/CD Pipeline
 
 on:
   push:
@@ -12,7 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -61,7 +60,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'pull_request' }}
-    
     steps:
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v1.2.1
