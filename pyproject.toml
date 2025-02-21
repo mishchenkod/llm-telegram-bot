@@ -10,7 +10,7 @@ requires-python = ">=3.13,<4.0"
 dependencies = [
     "python-telegram-bot (>=21.10,<22.0)",
     "python-dotenv (>=1.0.1,<2.0.0)",
-    "flake8 (>=7.1.2,<8.0.0)"
+    "flake8 (>=7.1.2,<8.0.0)",
     "ollama (>=0.4.7,<0.5.0)"
 ]
 
