@@ -10,11 +10,14 @@ from telegram.ext import (
     filters,
 )
 
-from bot import config
+from bot.config import TELEGRAM_BOT_TOKEN
+from bot.handlers import gemini_handler
 
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO
 )
+
+logger = logging.getLogger(__name__)
 
 
 async def start(update: Update, context: CallbackContext) -> None:
@@ -22,19 +25,17 @@ async def start(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text("Hello! I'm your Telegram bot.")
 
 
-async def echo(update: Update, context: CallbackContext):
-    """Echo user messages."""
-    await update.message.reply_text(update.message.text)
-
-
-def main():
+def main() -> None:
     """Starts the bot."""
-    app = ApplicationBuilder().token(config.TELEGRAM_BOT_TOKEN).build()
+    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    app.add_handler(CommandHandler("ask", gemini_handler.ask))
+    app.add_handler(
+        MessageHandler(filters.TEXT & ~filters.COMMAND, gemini_handler.mention)
+    )
 
-    print("Bot is running...")
+    logger.info("Bot started polling...")
     app.run_polling()
 
 
