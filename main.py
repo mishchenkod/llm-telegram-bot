@@ -18,7 +18,7 @@ logging.basicConfig(
 
 
 async def start(update: Update, context: CallbackContext) -> None:
-    """Send a welcome message when the /start command is issued."""
+    """Sends a welcome message when the /start command is issued."""
     await update.message.reply_text("Hello! I'm your Telegram bot.")
 
 
@@ -28,7 +28,7 @@ async def echo(update: Update, context: CallbackContext):
 
 
 def main():
-    """Start the bot."""
+    """Starts the bot."""
     app = ApplicationBuilder().token(config.TELEGRAM_BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
