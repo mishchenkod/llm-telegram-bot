@@ -43,7 +43,7 @@ Use a conversational and natural tone, adding light humor and emojis occasionall
 generation_config = types.GenerateContentConfig(
     system_instruction=system_instruction,
     temperature=0.8,
-    max_output_tokens=512,
+    max_output_tokens=128,
     top_p=0.9,
     top_k=40,
 )
