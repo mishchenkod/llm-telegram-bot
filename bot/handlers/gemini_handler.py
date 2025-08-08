@@ -3,14 +3,14 @@
 import logging
 
 from telegram import Update
-from telegram.ext import CallbackContext
+from telegram.ext import ContextTypes
 
 from bot.clients import gemini_client
 
 logger = logging.getLogger(__name__)
 
 
-async def ask(update: Update, context: CallbackContext) -> None:
+async def ask(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
     Handles /ask command that queries Gemini API.
     Replied-to message is used as additional context.
@@ -38,7 +38,7 @@ async def ask(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text(answer)
 
 
-async def mention(update: Update, context: CallbackContext) -> None:
+async def mention(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """
     Handles messages that mention the bot or reply to bot's messages.
     Replied-to message is used as additional context.

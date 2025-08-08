@@ -3,9 +3,9 @@ import logging
 
 from telegram import Update
 from telegram.ext import (
-    ApplicationBuilder,
-    CallbackContext,
+    Application,
     CommandHandler,
+    ContextTypes,
     MessageHandler,
     filters,
 )
@@ -20,14 +20,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def start(update: Update, context: CallbackContext) -> None:
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Sends a welcome message when the /start command is issued."""
     await update.message.reply_text("Hello! I'm your Telegram bot.")
 
 
 def main() -> None:
     """Starts the bot."""
-    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
+    app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("ask", gemini_handler.ask))
