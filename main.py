@@ -1,4 +1,3 @@
-import asyncio
 import logging
 
 from telegram import Update
@@ -40,4 +39,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
